@@ -1,0 +1,5 @@
+fitz==0.0.1.dev2
+matplotlib==3.5.2
+numpy==1.22.4
+PyMuPDF==1.20.1
+python-dotenv==0.20.0
