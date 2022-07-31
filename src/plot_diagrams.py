@@ -41,7 +41,7 @@ def plot_bookings_per_week(per_week_results: dict[int, list[int]]) -> None:
         # ax.bar_label(rects, padding=3)
 
     plt.xlabel('Kalenderwoche (KW)')
-    plt.ylabel('Anzahl Ausleihen pro KW')
+    plt.ylabel('Anzahl Ausleihen')
     plt.legend()
 
     ax.xaxis.set_major_locator(ticker.MultipleLocator(1))

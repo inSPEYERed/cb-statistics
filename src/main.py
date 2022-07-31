@@ -4,6 +4,7 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 
+from combine_pdf import combine_plots
 from plot_diagrams import (plot_bookings_per_item, plot_bookings_per_week,
                            plot_bookings_per_weekday)
 
@@ -214,3 +215,5 @@ plot_bookings_per_weekday(per_weekday_results)
 
 per_item_results = evaluate_items(combined)
 plot_bookings_per_item(per_item_results)
+
+combine_plots()
