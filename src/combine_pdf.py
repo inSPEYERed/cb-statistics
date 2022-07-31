@@ -3,7 +3,7 @@ import os
 import fitz
 
 
-def combine_plots():
+def combine_plot_pdfs():
     print('💠 Combining PDFs')
     combined = fitz.open()
     
