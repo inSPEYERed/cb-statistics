@@ -44,7 +44,7 @@ def plot_bookings_per_week(per_week_results: dict[int, list[int]]) -> None:
     plt.legend()
 
     ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
-    ax.set_xlim(1, 53)
+    ax.set_xlim(0, 53+1)
     ax.grid(axis='y')
 
     plt.tight_layout()
@@ -73,12 +73,52 @@ def plot_bookings_per_weekday(per_weekday_results: dict[int, list[int]]) -> None
     plt.ylabel('Anzahl Ausleihen')
     plt.legend()
 
-    x_labels = ['', '', 'Montag', 'Dienstag', 'Mittwoch',
+    x_labels = ['Montag', 'Dienstag', 'Mittwoch',
                 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag']
-    ax.set_xticklabels(x_labels)
+    ax.set_xticklabels(['', ''] + x_labels)
 
     ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
-    ax.set_xlim(0, 8)
+    ax.set_xlim(0, 7+1)
+    ax.grid(axis='y')
+
+    plt.tight_layout()
+    plt.show()
+
+
+def plot_bookings_per_item(per_item_results: dict[int, dict[str, int]]) -> None:
+    # Printout to the console
+    for year in sorted(per_item_results):
+        year_counts = per_item_results[year]
+        print(f'Year {year}: {year_counts}')
+
+    fig, ax = plt.subplots(figsize=(10, 9))
+    num_items = len(list(per_item_results.values())[0])
+    x_values = np.arange(1, num_items+1)  # [start, begin)
+    bar_width = 0.35
+
+    x_ticklabels = []
+    for i, year in enumerate(sorted(per_item_results)):
+        year_results = per_item_results[year]
+        values = list(year_results.values())
+        print('VALUES')
+        print(values)
+
+        if i == 0:
+            item_names = year_results.keys()
+            x_ticklabels.extend(item_names)
+
+        rects = plt.bar(x_values - (bar_width/2) + i*bar_width,
+                        values, bar_width, label=year, color=COLORS[i], hatch=PATTERNS[i])
+        # ax.bar_label(rects, padding=3)
+
+    plt.xlabel('Lastenrad')
+    plt.ylabel('Anzahl Ausleihen')
+    plt.legend()
+
+    ax.set_xticklabels(['', ''] + x_ticklabels)
+
+    ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+    ax.set_xlim(0, num_items+1)
     ax.grid(axis='y')
 
     plt.tight_layout()

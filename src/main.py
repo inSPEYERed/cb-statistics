@@ -4,7 +4,8 @@ from datetime import datetime
 
 from dotenv import load_dotenv
 
-from plot_diagrams import plot_bookings_per_week, plot_bookings_per_weekday
+from plot_diagrams import (plot_bookings_per_item, plot_bookings_per_week,
+                           plot_bookings_per_weekday)
 
 load_dotenv()
 
@@ -109,14 +110,10 @@ def evaluate_bookings_per_weekday(bookings: list[dict]) -> dict[int, list[int]]:
     # year -> [count_calender_week_2, count_calender_week_2, ..., count_calender_week_53]
     results: dict[int, list[int]] = {}
 
-    count_other = 0
-    count_confirmed = 0
     for booking in bookings:
         # Only bookings that got confirmed
         if booking['status'] != 'confirmed':
-            count_other += 1
             continue
-        count_confirmed += 1
 
         # Date
         try:
@@ -132,12 +129,54 @@ def evaluate_bookings_per_weekday(bookings: list[dict]) -> dict[int, list[int]]:
         # Monday is 1, Sunday is 7
         weekday = start_date.isocalendar().weekday
 
-        # Init array for calender weeks
+        # Init array for calender weekdays
         if year not in results:
             # there are 7 weekdays
             results[year] = [0 for _ in range(7)]
 
         results[year][weekday-1] += 1
+
+    return results
+
+
+def evaluate_items(bookings: list[dict]) -> dict[int, dict[str, int]]:
+    print('💠 Evaluate bookings per item')
+
+    # year -> [count_calender_week_2, count_calender_week_2, ..., count_calender_week_53]
+    results: dict[int, dict[str, int]] = {}
+
+    item_map = {
+        438: 'Edgar',
+        665: 'Emilio',
+        617: 'Eva',
+        774: 'Teeresa'
+    }
+
+    for booking in bookings:
+        # Only bookings that got confirmed
+        if booking['status'] != 'confirmed':
+            continue
+
+        # Date
+        try:
+            start_date_unix = int(booking['repetition-start'])
+        except:
+            print(
+                f'  ❌ Could not find key `repetition-start` in this dataset: {booking}')
+            continue
+
+        start_date = datetime.utcfromtimestamp(start_date_unix)
+        year = start_date.year
+
+        # Item
+        item = int(booking['item-id'])
+        item = item_map[item]
+        if year not in results:
+            results[year] = {}
+        try:
+            results[year][item] += 1
+        except KeyError:
+            results[year][item] = 0
 
     return results
 
@@ -172,3 +211,6 @@ plot_bookings_per_week(per_week_results)
 
 per_weekday_results = evaluate_bookings_per_weekday(combined)
 plot_bookings_per_weekday(per_weekday_results)
+
+per_item_results = evaluate_items(combined)
+plot_bookings_per_item(per_item_results)
