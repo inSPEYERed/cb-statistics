@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 
 from dotenv import load_dotenv
+from numpy import average
 
 from combine_pdf import combine_plots
 from plot_diagrams import (plot_bookings_per_item, plot_bookings_per_week,
@@ -209,6 +210,15 @@ combined = list(combined.values())
 
 per_week_results = evaluate_bookings_per_week(combined)
 plot_bookings_per_week(per_week_results)
+
+# Average per week
+print()
+print('🧾 Average per week')
+print(per_week_results[2021][9:])
+print(per_week_results[2022][:30])
+print(f'Average per week 2021: {average(per_week_results[2021][9:])}')
+print(f'Average per week 2022: {average(per_week_results[2022][:30])}')
+print()
 
 per_weekday_results = evaluate_bookings_per_weekday(combined)
 plot_bookings_per_weekday(per_weekday_results)
