@@ -1,5 +1,3 @@
-from numpy import average
-
 from combine_pdf import combine_plot_pdfs
 from evaluation import (evaluate_bookings_per_item, evaluate_bookings_per_week,
                         evaluate_bookings_per_weekday)
@@ -36,13 +34,6 @@ print('🔘 Evaluation')
 per_week_results = evaluate_bookings_per_week(bookings)
 per_weekday_results = evaluate_bookings_per_weekday(bookings)
 per_item_results = evaluate_bookings_per_item(bookings, items_map)
-
-# Average per week
-print(per_week_results[2021][9:])
-print(per_week_results[2022][:30])
-print(f'Average per week 2021: {average(per_week_results[2021][9:])}')
-print(f'Average per week 2022: {average(per_week_results[2022][:30])}')
-print()
 
 
 ############################### Plot diagrams ##################################
