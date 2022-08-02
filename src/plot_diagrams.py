@@ -8,6 +8,7 @@ COLORS = ['#057976', '#BF2118', '#014485']
 PATTERNS = ['.', '/', '.O']
 
 # https://stackoverflow.com/a/39566040/
+TINY_SIZE = 4
 SMALL_SIZE = 12
 MEDIUM_SIZE = 14
 BIGGER_SIZE = 16
@@ -15,8 +16,8 @@ plt.rc('font', size=MEDIUM_SIZE)          # controls default text sizes
 plt.rc('axes', titlesize=MEDIUM_SIZE)     # fontsize of the axes title
 plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
 plt.rc('axes', titlesize=BIGGER_SIZE)    # fontsize of the x and y labels
-plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
-plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+plt.rc('xtick', labelsize=TINY_SIZE)    # fontsize of the tick labels
+plt.rc('ytick', labelsize=TINY_SIZE)    # fontsize of the tick labels
 plt.rc('legend', fontsize=MEDIUM_SIZE)    # legend fontsize
 # plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
@@ -105,6 +106,9 @@ def plot_bookings_per_item(per_item_results: dict[int, dict[str, int]], item_nam
     plt.ylabel('Anzahl Ausleihen')
     plt.legend()
 
+    # replace whitespaces with newlines, cleans up tick labels
+    item_names = [name.replace(' ', '\n') for name in item_names] 
+	
     ax.set_xticklabels(['', ''] + item_names)
 
     ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
