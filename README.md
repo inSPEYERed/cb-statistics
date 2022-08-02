@@ -1,8 +1,9 @@
 # Commons Booking Statistics 📊
 
-This Python script will help you to get some statistics based on your [Commons Booking](https://github.com/wielebenwir/commonsbooking) data. The source code is only intended as a starting point to do your own evaluation (see the file `evaluation.py`). You might have to adjust the code to make it work for your specific dataset, but only small adjustments should be required (e.g. something like: add more colors to a colors array if you have more than three years of data or change the names of your bookable items).
+This Python script will help you to get some statistics based on your [Commons Booking](https://github.com/wielebenwir/commonsbooking) data. The source code is only intended as a starting point to do your own evaluation (see the file `evaluation.py`). You might have to adjust the code to get the plots right for your specific dataset, but only small adjustments should be required (e.g. something like: add more colors to a colors array if you have more than three years of data), see [this file](https://github.com/inSPEYERed/cb-statistics/blob/main/src/plot_diagrams.py).
 
 This project is especially helpful if you want to skip the annoying parsing part of the weird database tables `posts` and `postmeta` — where the new Commons Booking (starting with version 2) is storing all of the bookings and corresponding data (instead of their lovely old, *separate* cb_tables beforehand) ...
+
 
 ## Usage
 
@@ -14,6 +15,8 @@ Tested with Python 3.10.5:
 - Create a `.env` file next to this Readme with the only entry `WP_TABLE_PREFIX=<your-table-prefix, e.g. wp>`.
 - Run the script via `python ./src/main.py`.
 - Check the folder `./plots/` to find the output (`statistics.pdf` has all the statistics combined).
+
+Feel free to open an issue if something is not working for you.
 
 
 ## Sample result
@@ -33,8 +36,10 @@ This is how the bookings per weekday result can look like:
 
 This program is licensed with the very permissive MIT license, see the LICENSE file for details. As this is only a small project, we don't require you to include the license header in every source file, however you must include it at the root of your project. According to the MIT license you must also include a copyright notice, that is, link back to this project, e.g. in this way:
 
+```
 cb-statistics - Copyright (c) 2022 inSPEYERed
+```
 
-Any questions regarding the license? [This FAQ](https://www.tawesoft.co.uk/kb/article/mit-license-faq) might help.
+This copyright notice is, however, only needed for source code, not the statistics you rendered with this script.
 
-This project is not endorsed by the official [Commons Booking](https://github.com/wielebenwir/commonsbooking).
+Any questions regarding the license? [This FAQ](https://www.tawesoft.co.uk/kb/article/mit-license-faq) might help. This project is not endorsed by the official [Commons Booking](https://github.com/wielebenwir/commonsbooking).
