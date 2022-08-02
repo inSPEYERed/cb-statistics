@@ -4,7 +4,6 @@ This Python script will help you to get some statistics based on your [Commons B
 
 This project is especially helpful if you want to skip the annoying parsing part of the weird database tables `posts` and `postmeta` — where the new Commons Booking (starting with version 2) is storing all of the bookings and corresponding data (instead of their lovely old, *separate* cb_tables beforehand) ...
 
-
 ## Usage
 
 Tested with Python 3.10.5:
@@ -19,7 +18,13 @@ Tested with Python 3.10.5:
 
 ## Sample result
 
-This is one of the outcomes (currently only in Germany, but you could easily adapt that in the source code):
+Currently supported plots:
+
+- Bookings per calender week
+- Bookings per weekday
+- Bookings per item
+
+This is how the bookings per weekday result can look like:
 
 ![cb-statistics-sample-result](https://user-images.githubusercontent.com/37160523/182097721-954bf314-1f5b-45e9-ab38-266df26de06a.jpg)
 
