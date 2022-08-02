@@ -61,7 +61,7 @@ def evaluate_bookings_per_weekday(bookings: list[dict[str, str]]) -> dict[int, l
 
 
 def evaluate_bookings_per_item(bookings: list[dict],
-                               items_map: dict[int, str]) -> dict[int, dict[str, int]]:
+                               items: dict[int, str]) -> dict[int, dict[str, int]]:
     print('💠 Evaluate bookings per item')
 
     # year -> { 'item1': count_item1, 'item2': count_item_2, ... }
@@ -77,7 +77,7 @@ def evaluate_bookings_per_item(bookings: list[dict],
         year = date.year
 
         item = int(booking['item-id'])
-        item_name = items_map[item]
+        item_name = items[item]
 
         if year not in results:
             results[year] = {}

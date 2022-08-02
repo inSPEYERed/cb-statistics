@@ -24,24 +24,30 @@ def read_phpmyadmin_json_file(file: str) -> list[dict]:
     return records
 
 
-def parse_posts_booking_status() -> dict[int, str]:
+def parse_posts_booking_status_and_items() -> tuple[dict[int, str], dict[int, str]]:
     print('💠 Parsing posts file -> Extract booking status from it')
 
     file = os.path.join(DATA_FOLDER, f'{WP_TABLE_PREFIX}_posts.json')
     records = read_phpmyadmin_json_file(file)
 
     # booking_id -> booking status
-    bookings: dict[int, str] = {}
+    bookings_status: dict[int, str] = {}
+    # item_id -> item name
+    items: dict[int, str] = {}
+
     for record in records:
-        if record['post_type'] != 'cb_booking' or record['post_title'] != 'Buchung':
+        if record['post_type'] == 'cb_booking' and record['post_title'] == 'Buchung':
+            id = int(record['ID'])
+            status = record['post_status']
+            bookings_status[id] = status
             continue
 
-        id = int(record['ID'])
-        status = record['post_status']
+        if record['post_type'] == 'cb_item':
+            id = int(record['ID'])
+            item_name = record['post_title']
+            items[id] = item_name
 
-        bookings[id] = status
-
-    return bookings
+    return bookings_status, items
 
 
 def parse_postmeta_bookings() -> dict[int, dict[str, str]]:
