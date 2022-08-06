@@ -1,8 +1,15 @@
-async function start() {
+async function startProcessing(csvText) {
     // Get CSV
-    csv = await getCsv();
-    // console.log('💻 Got this CSV:');
-    // console.log(csv);
+    const csvConfig = {
+        'fSep': ';',
+        'rSep': '\n',
+        'quot': '"',
+        'head': false,
+        'trim': true
+    };
+    csv = csvText.csvToArray(csvConfig);
+    console.log('▶ Got this CSV');
+    console.log(csv);
 
     // Parse bookings
     bookings = constructDTOFromCSVArray(csv);
@@ -17,5 +24,3 @@ async function start() {
     plotBookingsPerWeekday(perWeekdayResults);
     plotBookingsPerItem(perItemResults);
 }
-
-start();

@@ -1,28 +1,28 @@
-function getCsv() {
-    const csvConfig = {
-        'fSep': ';',
-        'rSep': '\n',
-        'quot': '"',
-        'head': false,
-        'trim': true
-    };
+// function getCsv() {
+//     const csvConfig = {
+//         'fSep': ';',
+//         'rSep': '\n',
+//         'quot': '"',
+//         'head': false,
+//         'trim': true
+//     };
 
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: '/data/cb-export.csv',
-            dataType: 'text',
-            cache: false,
-            success: data => {
-                csvArray = data.csvToArray(csvConfig);
-                resolve(csvArray);
-            },
-            error: error => {
-                reject(error);
-                console.log(csvArray);
-            }
-        });
-    });
-}
+//     return new Promise((resolve, reject) => {
+//         $.ajax({
+//             url: '/data/cb-export.csv',
+//             dataType: 'text',
+//             cache: false,
+//             success: data => {
+//                 csvArray = data.csvToArray(csvConfig);
+//                 resolve(csvArray);
+//             },
+//             error: error => {
+//                 reject(error);
+//                 console.log(csvArray);
+//             }
+//         });
+//     });
+// }
 
 function isExpectedHeader(headerArray) {
     const expectedHeader = [

@@ -29,20 +29,27 @@ $('#drop-zone').on('drop', event => {
     $('#drop-zone').removeClass('drop-active');
     event.stopPropagation();
     event.preventDefault();
-    const fileList = event.originalEvent.dataTransfer.files;
-    console.log(fileList);
-    if (fileList.length > 1) {
+    const files = event.originalEvent.dataTransfer.files;
+    handleFiles(files);
+});
+
+// https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications#accessing_selected_files_on_a_change_event
+$('#input-file').on('change', event => {
+    const files = event.target.files;
+    handleFiles(files);
+});
+
+function handleFiles(files) {
+    if (files.length > 1) {
         alert('Please provide just one single CSV file');
         return;
     }
-    file = fileList[0];
-    const succeeded = checkMetadataForFile(file);
-    if (!succeeded)
-        return;
+    const file = files[0];
 
-
-
-});
+    if (checkMetadataForFile(file)) {
+        readCsvFileContent(file);
+    }
+}
 
 function checkMetadataForFile(file) {
     if (file.type) {
@@ -58,4 +65,13 @@ function checkMetadataForFile(file) {
         }
     }
     return true;
+}
+
+function readCsvFileContent(file) {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+        const csvText = event.target.result;
+        startProcessing(csvText);
+    };
+    reader.readAsText(file, 'utf-8');
 }
