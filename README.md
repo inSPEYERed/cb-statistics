@@ -1,4 +1,17 @@
-# Commons Booking Statistics 📊
+<p align="center">
+  <img alt="Commons Booking Statistics Showcase" src="https://user-images.githubusercontent.com/37160523/183249030-54fe4e3a-ca14-4ced-8cf0-9ba32ede4e6f.gif" width="600" />
+  <h3 align="center">Commons Booking Statistics 📊</h3>
+  <p align="center">Visualize your <a href="https://commonsbooking.org/">Commons Booking</a> data. <a href="https://inspeyered.github.io/cb-statistics/">Start here</a>.</p>
+</p>
+
+Visit the website [here](https://inspeyered.github.io/cb-statistics/) where you can upload the timeframes/bookings you've directly exported from within WordPress (see [the docs](https://commonsbooking.org/docs/einstellungen-2/export/) on how to do this). Your data never leaves the browser; it is not uploaded to any server, so you don't have to worry about your privacy and GDPR.
+
+---
+
+# Original Python backend
+
+_Originally, this project was only written in Python, plotting with `matplotlib` and exporting the diagrams as PDFs using `PyMuPDF`. For the Python project, you had to download some tables from PhpMyAdmin. With the [new web app](https://inspeyered.github.io/cb-statistics/), this is not necessary anymore, just upload your CSV file and that's it. No installation required._
+
 
 This Python script will help you to get some statistics based on your [Commons Booking](https://github.com/wielebenwir/commonsbooking) data. The source code is only intended as a starting point to do your own evaluation (see the file `evaluation.py`). You might have to adjust the code to get the plots right for your specific dataset, but only small adjustments should be required (e.g. something like: add more colors to a colors array if you have more than three years of data), see [this file](https://github.com/inSPEYERed/cb-statistics/blob/main/src/plot_diagrams.py).
 
