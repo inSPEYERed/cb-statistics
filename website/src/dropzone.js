@@ -53,7 +53,8 @@ function handleFiles(files) {
 
 function checkMetadataForFile(file) {
     if (file.type) {
-        if (file.type != 'text/csv') {
+        // Allow CSV and Microsoft Excel CSV
+        if (file.type != 'text/csv' && file.type != 'application/vnd.ms-excel') {
             alert(`Must be a CSV file, but you uploaded this type: ${file.type}`);
             return false;
         }

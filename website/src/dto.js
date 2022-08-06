@@ -3,8 +3,13 @@ class CbData {
         this.title = data['post_title'];
         this.status = data['post_status'];
         this.type = data['type'];
-        this.startDate = new Date(data['repetition-start']);
-        this.endDate = new Date(data['repetition-end']);
+
+        // Dates
+        const beginDateStr = convertToParsableDateString(data['repetition-start']);
+        const endDateStr = convertToParsableDateString(data['repetition-end']);
+        this.startDate = new Date(beginDateStr);
+        this.endDate = new Date(endDateStr);
+
         this.station = data['location-post_title'];
         this.item = data['item-post_title'];
         this.user = new User({
@@ -47,4 +52,10 @@ function constructDTOFromCSVArray(csv) {
     }
 
     return bookings
+}
+
+function convertToParsableDateString(dateStr) {
+    // Commons Booking has this format: 25. May 2022
+    // we get back: 25 May 2022 (this is parsable by Date.parse())
+    return dateStr.replaceAll('.', '');
 }

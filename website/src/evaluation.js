@@ -14,7 +14,7 @@ function evaluateBookingsPerWeek(bookings) {
         }
 
         const dates = getDatesInRange(booking.startDate, booking.endDate);
-        for (date of dates) {
+        for (const date of dates) {
             const weekNumber = getIsoWeekNumber(date);
             results[year][weekNumber - 1] += 1;
         }
@@ -33,7 +33,7 @@ function evaluateBookingsPerWeekday(bookings) {
             results[year] = [0, 0, 0, 0, 0, 0, 0] // Monday to Sunday
 
         const dates = getDatesInRange(booking.startDate, booking.endDate);
-        for (date of dates) {
+        for (const date of dates) {
             const weekDay = getIsoWeekday(date);
             results[year][weekDay - 1] += 1;
         }
