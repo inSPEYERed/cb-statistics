@@ -1,0 +1,47 @@
+h2 {
+    padding: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#link-title {
+    color: white;
+    text-underline-offset: 6px;
+}
+
+a {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 4px;
+}
+
+a:hover {
+    text-decoration-style: solid;
+}
+
+#wrapper {
+    margin: 30px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.plot {
+    height: 700px;
+}
+
+.fixed-plot-div-height {
+    height: 0px;
+}
+
+@media(max-width: 767.98px) {
+    #wrapper {
+        border: none;
+    }
+}
+
+#createdby {
+    color:grey;
+}
