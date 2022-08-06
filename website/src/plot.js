@@ -6,7 +6,9 @@ const layout = {
 const config = {
     scrollZoom: true,
     modeBarButtonsToRemove: ['select2d', 'lasso2d', 'resetScale2d', 'zoomOut2d', 'zoomIn2d'],
-    displayModeBar: true
+    displayModeBar: true,
+    displaylogo: false,
+    responsive: true
 };
 
 
