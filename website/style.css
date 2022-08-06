@@ -3,7 +3,7 @@ h2 {
     background-color: black;
     color: white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 #link-title {
@@ -25,11 +25,15 @@ a:hover {
     margin: 30px;
     padding: 10px;
     border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .plot {
     height: 700px;
+}
+
+.fixed-plot-div-height {
+    height: 0px;
 }
 
 @media(max-width: 767.98px) {

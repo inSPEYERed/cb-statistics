@@ -25,5 +25,6 @@ async function startProcessing(csvText) {
     plotBookingsPerWeekday(perWeekdayResults);
     plotBookingsPerItem(perItemResults);
 
+    $('#plot-div').removeClass('fixed-plot-div-height'); // Rest 0px height
     console.log('Finished ✅');
 }
