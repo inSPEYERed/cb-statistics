@@ -7,7 +7,18 @@ h2 {
 }
 
 #link-title {
-    text-decoration: none;
+    color: white;
+    text-underline-offset: 6px;
+}
+
+a {
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 4px;
+}
+
+a:hover {
+    text-decoration-style: solid;
 }
 
 #wrapper {
@@ -19,4 +30,10 @@ h2 {
 
 .plot {
     height: 700px;
+}
+
+@media(max-width: 767.98px) {
+    #wrapper {
+        border: none;
+    }
 }
