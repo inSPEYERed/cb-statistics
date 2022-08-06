@@ -8,8 +8,9 @@ async function startProcessing(csvText) {
         'trim': true
     };
     csv = csvText.csvToArray(csvConfig);
-    console.log('▶ Got this CSV');
+    console.log('🙌 Got this CSV');
     console.log(csv);
+    console.log('Starting to process the data now...');
 
     // Parse bookings
     bookings = constructDTOFromCSVArray(csv);
@@ -23,4 +24,6 @@ async function startProcessing(csvText) {
     plotBookingsPerWeek(perWeekResults);
     plotBookingsPerWeekday(perWeekdayResults);
     plotBookingsPerItem(perItemResults);
+
+    console.log('Finished ✅');
 }
