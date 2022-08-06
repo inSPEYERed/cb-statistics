@@ -1,0 +1,22 @@
+h2 {
+    padding: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#link-title {
+    text-decoration: none;
+}
+
+#wrapper {
+    margin: 30px;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.plot {
+    height: 700px;
+}
