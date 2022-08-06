@@ -28,7 +28,8 @@ function constructDTOFromCSVArray(csv) {
     // Header
     header = csv[0];
     if (!isExpectedHeader(header)) {
-        throw 'CSV parser: header is different from the data format we expected';
+        alert('CSV parser: unexpected header, is this data from a Commons Booking export?');
+        return null;
     }
 
     // Construct DTOs

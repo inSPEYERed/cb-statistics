@@ -14,6 +14,10 @@ async function startProcessing(csvText) {
 
     // Parse bookings
     bookings = constructDTOFromCSVArray(csv);
+    if (!bookings) {
+        console.log('❌ Aborting, CSV reading/parsing not successful');
+        return;
+    }
 
     // Do something with the records
     perWeekResults = evaluateBookingsPerWeek(bookings);
