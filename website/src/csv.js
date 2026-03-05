@@ -25,28 +25,12 @@
 // }
 
 function isExpectedHeader(headerArray) {
-    const expectedHeader = [
-        "ID",
-        "post_author",
-        "post_date",
-        "post_date_gmt",
-        "post_content",
+    const shouldContain = [
         "post_title",
-        "post_excerpt",
         "post_status",
-        "post_name",
         "type",
-        "timeframe-repetition",
-        "grid",
-        "timeframe-max-days",
-        "full-day",
         "repetition-start",
         "repetition-end",
-        "start-time",
-        "end-time",
-        "pickup",
-        "return",
-        "booking-code",
         "location-post_title",
         "item-post_title",
         "user-firstname",
@@ -54,6 +38,6 @@ function isExpectedHeader(headerArray) {
         "user-login",
         "comment"
     ];
-    return headerArray.length === expectedHeader.length
-        && headerArray.every((value, index) => value === expectedHeader[index]);
+    return headerArray.length >= shouldContain.length
+        && shouldContain.every((key) => headerArray.includes(key))  ;
 }
